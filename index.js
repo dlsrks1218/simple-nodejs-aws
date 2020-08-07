@@ -19,8 +19,8 @@ app.get('/health', (req, res) => {
     res.status(200).send();
 });
 
-app.get('/users', (req, res) => {
-  connection.query('SELECT * from Users', (error, rows) => {
+app.get('/members', (req, res) => {
+  connection.query('SELECT * from [회원목록테이블]', (error, rows) => {
     if (error) throw error;
     console.log('User info is: ', rows);
     res.send(rows);
