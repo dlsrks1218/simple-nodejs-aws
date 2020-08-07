@@ -20,9 +20,17 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/members', (req, res) => {
-  connection.query('SELECT * from [회원목록테이블]', (error, rows) => {
+  connection.query('SELECT * from member', (error, rows) => {
     if (error) throw error;
     console.log('User info is: ', rows);
+    res.send(rows);
+  });
+});
+
+app.get('/members/:name', (req, res) => {
+  connection.query('select * from member where name=\'' + req.params.name + '\'', (error, rows) =>{
+    if(error) throw error;
+    console.log('user detail info is : ', rows);
     res.send(rows);
   });
 });
